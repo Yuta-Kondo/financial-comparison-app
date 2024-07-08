@@ -52,3 +52,6 @@ This project is a web application that allows users to compare financial data fo
 
 - Frontend:
   - `REACT_APP_API_URL`: URL of the backend API (default: `http://localhost:8080`)
+
+## Website
+You can access the live application [here](https://financial-comparison-frontend.onrender.com).
