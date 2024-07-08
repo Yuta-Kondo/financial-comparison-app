@@ -12,6 +12,8 @@ import (
 	"github.com/rs/cors"
 )
 
+const FRONTEND_URL = "https://financial-comparison-frontend.onrender.com"
+
 type FinancialData struct {
 	Symbol                               string `json:"symbol"`
 	Price                                string `json:"price"`
@@ -38,8 +40,7 @@ func main() {
 
 	// Update CORS configuration
 	c := cors.New(cors.Options{
-		// AllowedOrigins: []string{"https://financial-comparison-frontend.onrender.com"},
-		AllowedOrigins:   []string{"*"},
+		AllowedOrigins:   []string{FRONTEND_URL},
 		AllowedMethods:   []string{"GET", "POST", "OPTIONS"},
 		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,
@@ -117,19 +118,6 @@ func scrapeFinancialData(symbol string) FinancialData {
 			log.Printf("Price for %s: %s", symbol, financialData.Price)
 		}
 	})
-
-	// c.OnHTML("div.tableBody", func(e *colly.HTMLElement) {
-	// 	e.ForEach("div.row.lv-0.svelte-1xjz32c", func(_ int, el *colly.HTMLElement) { // Iterate through the rows
-	// 		rowTitle := el.ChildText("div.rowTitle")
-	// 		if rowTitle == "Total Revenue" {
-	// 			// Find the 3rd column with the class containing revenue data
-	// 			revenueText := el.ChildText("div.column.svelte-1xjz32c:nth-child(3)")
-	// 			financialData.Revenue = revenueText
-	// 			log.Printf("Revenue for %s: %s", symbol, financialData.Revenue)
-	// 			return // Stop iterating after finding Total Revenue
-	// 		}
-	// 	})
-	// })
 
 	c.OnHTML("div.tableBody", func(e *colly.HTMLElement) {
 		e.ForEach("div.row.lv-0.svelte-1xjz32c", func(_ int, el *colly.HTMLElement) {
