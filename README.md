@@ -3,8 +3,6 @@
 This project is a web application that allows users to compare financial data for different stock symbols. It consists of a Go backend that scrapes financial data from Yahoo Finance and a React frontend that displays the comparison in a table format.
 
 ## Demo
-
-### Option 1: Animated GIF
 ![Demo Video](demo.gif)
 
 ## Features
