@@ -39,9 +39,9 @@ func main() {
 	// Update CORS configuration
 	c := cors.New(cors.Options{
 		// AllowedOrigins: []string{"https://financial-comparison-frontend.onrender.com"},
-		AllowedOrigins: []string{"*"},
-		AllowedMethods: []string{"GET", "POST", "OPTIONS"},
-		AllowedHeaders: []string{"*"},
+		AllowedOrigins:   []string{"*"},
+		AllowedMethods:   []string{"GET", "POST", "OPTIONS"},
+		AllowedHeaders:   []string{"*"},
 		AllowCredentials: true,
 	})
 
@@ -90,6 +90,9 @@ func handleCompare(w http.ResponseWriter, r *http.Request) {
 }
 
 func scrapeFinancialData(symbol string) FinancialData {
+	// anti-scraping measures
+	time.Sleep(2 * time.Second)
+
 	c := colly.NewCollector(
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"),
 	)
