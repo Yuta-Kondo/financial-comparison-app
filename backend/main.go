@@ -103,6 +103,10 @@ func scrapeFinancialData(symbol string) FinancialData {
 		log.Printf("Error scraping %s: %v", symbol, err)
 	})
 
+	c.OnRequest(func(r *colly.Request) {
+		log.Printf("Visiting %s", r.URL)
+	})
+
 	c.OnResponse(func(r *colly.Response) {
 		log.Printf("Visited %s, status code: %d", r.Request.URL, r.StatusCode)
 	})
