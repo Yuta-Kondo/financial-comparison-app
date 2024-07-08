@@ -38,7 +38,8 @@ func main() {
 
 	// Update CORS configuration
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"https://financial-comparison-frontend.onrender.com"},
+		// AllowedOrigins: []string{"https://financial-comparison-frontend.onrender.com"},
+		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{"GET", "POST", "OPTIONS"},
 		AllowedHeaders: []string{"*"},
 	})
