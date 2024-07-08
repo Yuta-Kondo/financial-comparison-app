@@ -42,6 +42,7 @@ func main() {
 		AllowedOrigins: []string{"*"},
 		AllowedMethods: []string{"GET", "POST", "OPTIONS"},
 		AllowedHeaders: []string{"*"},
+		AllowCredentials: true,
 	})
 
 	handler := c.Handler(mux)
