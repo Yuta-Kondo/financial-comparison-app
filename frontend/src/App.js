@@ -27,10 +27,7 @@ function App() {
     try {
       console.log("fetching comparison data");
       setError(null);
-      // const response = await axios.get(`${REACT_APP_API_URL}/compare`, {
-      //   params: { symbols: symbolsToFetch },
-      // });
-      const response = await axios.get(`https://financial-comparison-backend.onrender.com/compare`, {
+      const response = await axios.get(`${REACT_APP_API_URL}/compare`, {
         params: { symbols: symbolsToFetch },
       });
       console.log("response: ", response);
